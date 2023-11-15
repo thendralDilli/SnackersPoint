@@ -1,0 +1,282 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   
+        Snackers Point 
+    </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script lang="javascript">
+        var i = 0;
+            var menuArray = [  
+                ['F','Chicken Biriyan', '12.99', '8' ],
+                ['F','Veg Briyani', '10.99','8'],
+                ['F','Mutton Briyani','15.99','7' ],
+                ['D','Mango Lassi','6.99','6' ],
+                ['D','Diet Coke','5.99','5' ],
+                ['D','Tea','6.99' ,'7'],
+                ['D','Coffee','6.99','8' ],
+                ['C','Veg Puff','4.99','9' ],
+                ['C','Pani Puri','4.99','10' ],
+                ['c','Samosa','3.99','8' ]
+                 ];             
+               
+            var selectedArray=[];
+            var selectedCartArray=[];
+            var k =0;
+
+            function menuChange() {
+                var ihtml="";
+                var innHtml="";
+                var isSelectedArray = false;
+                selectedArray = [];
+
+                for(var j=0;j<menuArray.length;j++)
+                {
+                    if((fd.value=='Food')&&(menuArray[j][0]=='F'))
+                    {
+                        isSelectedArray = true;
+                    } 
+                    else if((fd.value=='Drink')&&(menuArray[j][0]=='D'))
+                    {
+                        isSelectedArray = true;
+                    } 
+                    else if((fd.value=='Chatt')&&(menuArray[j][0]=='C'))
+                    {
+                        isSelectedArray = true;
+                    } 
+                    else
+                    {
+                        isSelectedArray=false;
+                    }
+
+                    if(isSelectedArray)
+                    {
+                        if(price.value == '<$10')
+                        {
+                            if(menuArray[j][2] <= 10 )
+                            {
+                                isSelectedArray = true;
+                            }
+                            else
+                            {
+                                isSelectedArray = false;
+                            }
+                        }
+                        else if(price.value == '$10 to $20')
+                        {
+                            if(((menuArray[j][2]) <= 20.0) && ((menuArray[j][2]) >= 10.0) )
+                            {
+                                
+                                isSelectedArray = true;
+                            }
+                            else
+                            {
+                                isSelectedArray = false;
+                            }
+                        }
+                        else if(price.value == '>$30')
+                        {
+                            if(menuArray[j][2] >= 30 )
+                            {   
+                                isSelectedArray = true;
+                            } 
+                            else
+                            {
+                                isSelectedArray = false;
+                            }
+                        }
+                        else{
+                            isSelectedArray = false;
+                        }
+                    }
+
+                    if(isSelectedArray)
+                    {
+                        if(rating.value == menuArray[j][3] )
+                        {
+                            isSelectedArray = true;
+                        }
+                        else
+                        {
+                            isSelectedArray = false;
+                        }
+                    }
+
+                    if(isSelectedArray == true)
+                    {
+                        selectedArray.push(menuArray[j]);
+                        isSelectedArray = false;
+                    }
+                  }
+                  onChange1();
+
+               // event.stopPropagation();
+                //event.cancelBubble = true;
+
+                }
+      </script>
+</head>
+<style>
+    .text-large {
+        font-size: 350%;
+    }
+    .text-medium {
+        font-size: 200%;
+    }
+    .fntSize {
+        font-size: 150%;
+    }
+</style>
+<body onLoad="menuChange()">
+<form  >
+<div class="col-md-8">
+    <div  >
+        <div class="text text-center text-large">
+        Snackers Point 
+        </div>
+        <div>
+        <img width="700px" height="300px" src="./img/MainImage.jpeg">
+        </div>
+        <br>
+        <div class="fntSize">
+            Menu<select id="fd" onchange="menuChange(this)" >
+                <option value="Food" selected>Food</option>
+                <option value="Drink">Drink</option>
+                <option value="Chatt">Chatt</option>
+            </select>
+            Price<select id="price" onchange="menuChange(this)" >
+                <option><$10</option>
+                <option selected>$10 to $20</option>
+                <option>>$30</option>
+            </select>
+            <span class="glyphicon glyphicon-star"></span>
+            Rating<select id="rating" onchange="menuChange(this)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option selected value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        <script lang="javascript">
+
+        </script>
+
+        <div class="col-md-4" id="menuList">
+           
+        </div>
+    </div>
+</div>
+<div class="col-md-4 text-medium" id="cartList"  class="fntSize">
+    Your Checkout
+</div>
+</form>
+
+<script lang="javascript">
+    function onChange1()
+    {
+        document.getElementById ("menuList").innerHTML = "";
+            for(i =0 ;i<selectedArray.length;i++)
+                  {
+                   
+                    const dTag = document.createElement("div");
+                    const lTag=document.createElement("label");
+                    const priceDivTag=document.createElement("div");
+                    const ratingDivTag=document.createElement("div");
+                    const buttonTag=document.createElement("button");
+                    const spanTag=document.createElement("span");
+
+
+                    lTag.id ="lbl"+i;
+                    lTag.innerHTML= selectedArray[i][1];
+                    priceDivTag.id = "priceDiv"+ i;
+                    priceDivTag.innerHTML = "$"+selectedArray[i][2] ;
+                    ratingDivTag.id = "ratingDiv" + i;
+                    ratingDivTag.innerHTML = selectedArray[i][3] ;
+                    spanTag.innerHTML= "<button id ='btn" +i +"' value='Add to Cart' onClick=addToCart("+ i+")> Add to Cart";
+
+                    //buttonTag.id= "btn" + i;
+                    //buttonTag.innerHTML="Add to Cart";
+                    //sbuttonTag.onclick =  function(){addToCart(i)};
+
+                    dTag.appendChild(lTag);
+                    document.getElementById("menuList").appendChild(dTag);
+                    document.getElementById("menuList").appendChild(priceDivTag);
+                    document.getElementById("menuList").appendChild(ratingDivTag);
+                    document.getElementById("menuList").appendChild(spanTag);
+                  }                  
+             }
+
+    function addToCart(i)
+                  {
+                    const dTag = document.createElement("div");
+                    const lTag=document.createElement("label");
+                    const priceDivTag=document.createElement("div");
+                    const ratingDivTag=document.createElement("div");
+                    const buttonTag=document.createElement("button");
+                    const spanTag=document.createElement("span");
+
+
+                    lTag.id ="cartLbl"+k;
+                    lTag.innerHTML= selectedArray[i][1];
+                    priceDivTag.id = "cartPriceDiv"+ k;
+                    priceDivTag.innerHTML = "$"+selectedArray[i][2] ;
+                    ratingDivTag.id = "cartRatingDiv" + k;
+                    ratingDivTag.innerHTML = selectedArray[i][3] ;
+                    spanTag.id="cartSpan"+k;
+                    spanTag.innerHTML= "<button id ='cartBtn" +k +"' value='Remove from Cart' onClick=removeFromCart("+ k+")> Remove from Cart";
+
+                    //buttonTag.id= "btn" + i;
+                    //buttonTag.innerHTML="Add to Cart";
+                    //buttonTag.onclick = addToCart;
+
+                    dTag.appendChild(lTag);
+                    document.getElementById("cartList").appendChild(dTag);
+                    document.getElementById("cartList").appendChild(priceDivTag);
+                    document.getElementById("cartList").appendChild(ratingDivTag);
+                    document.getElementById("cartList").appendChild(spanTag);
+
+                    //selectedCartArray[k][0] = selectedArray[i][1];
+                    //selectedCartArray[k][0] = selectedArray[i][2];
+                    //selectedCartArray[k][0] = selectedArray[i][3];
+                    k++;
+                    
+                    event.stopPropagation();
+                    event.cancelBubble=true;
+                    event.preventDefault();
+
+                  }
+
+        function removeFromCart(k)
+                {
+                   // document.getElementById("cartList").removeAttribute("cartBtn"+i);
+                   event.preventDefault();
+
+                   //alert(document.getElementById("cartList").innerHTML);
+                    //document.getElementById("cartLbl"+k).innerHTML="";
+                    //document.getElementById("cartPriceDiv"+k).innerHTML="";
+                    //document.getElementById("cartRatingDiv"+k).innerHTML="";
+                    //document.getElementById("cartSpan"+k).innerHTML="";
+                    
+                    document.getElementById("cartLbl"+k).remove();
+                    document.getElementById("cartPriceDiv"+k).remove();
+                    document.getElementById("cartRatingDiv"+k).remove();
+                    document.getElementById("cartSpan"+k).remove();
+
+
+                    event.preventDefault();
+
+                }
+
+</script>
+
+</body>
+</html>

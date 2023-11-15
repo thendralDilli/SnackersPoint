@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   
+        Snackers Point 
+    </title>
+    <link rel="stylesheet" href="CSS/SnackerPintStyles.css"
+</head>
+<body>
+   
+    <div id="id1">
+        Snackers Point 
+    </div>
+    
+        <div id="id2" >
+            <img width="1000px" height="100%" src="img/MainImage.jpeg">
+        </div>
+       <div id="id3">
+            Your Checkout
+        </div>
+        
+        <div>
+            <table>
+            <tr>
+                <td>
+            <div>
+                Menu<select>
+                    <option>Food</option>
+                    <option>Drink</option>
+                    <option>Chatt</option>
+                </select><br><br>
+            </div>
+        </td>
+        </tr>
+        <tr>
+            <td style="border: black; border-style:solid;width:50%;">
+                <div  >
+                     Mango Lassi 
+                    <div>
+                          Price $2.99
+                    </div>
+                    <div>
+                        <input type="button" value="Add to Cart">
+                    </div>
+                <div>
+            </td>
+            <td style="border: black; border-style:solid;width:50%;">
+                <div >
+                     Mango Lassi 
+                    <div>
+                         Price $2.99
+                    </div>
+                    <div>
+                        <input type="button" value="Add to Cart">
+                    </div>
+                </div>
+            <td>
+        </tr>
+    
+        </div>
+    
+</body>
+</html>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
