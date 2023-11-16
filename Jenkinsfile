@@ -6,7 +6,7 @@ node {
       }     
       stage('Build image') {         
        
-            app = docker.build("DockerCredentials/SnackersPoint")    
+            app = docker.build("DockerCredentials/snackerspoint")    
        }     
       stage('Test image') {           
             app.inside {            
