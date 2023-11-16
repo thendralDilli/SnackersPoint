@@ -1,3 +1,6 @@
-FROM httpd:2.4
+FROM nginx:latest
 
-COPY ./ /usr/local/apache2/htdocs/
+COPY ./ /usr/share/nginx/
+
+EXPOSE 80
+CMD [ "nginx","g","demon off;" ]
