@@ -21,4 +21,9 @@ node {
        app.push("latest")        
               }    
            }
+
+           stage('Run image')
+           {
+            sh "docker run -it --entrypoint usr/share/nginx/html/snackers.html"
+           }
         }
